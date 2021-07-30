@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "simple_texts",
+  "info": {
+    "name": "SimpleText",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "textContent": {
+      "type": "richtext",
+      "required": true
+    },
+    "section": {
+      "via": "simple_text",
+      "model": "section"
+    }
+  }
+}

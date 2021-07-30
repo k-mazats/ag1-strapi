@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "text_panels",
+  "info": {
+    "name": "TextPanel",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "textContent": {
+      "type": "richtext",
+      "required": true
+    },
+    "slide": {
+      "via": "text_panels",
+      "model": "slide"
+    }
+  }
+}

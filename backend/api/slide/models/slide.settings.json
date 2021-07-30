@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "slides",
+  "info": {
+    "name": "Slide",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Text",
+        "Image"
+      ]
+    },
+    "text_panels": {
+      "via": "slide",
+      "collection": "text-panel"
+    },
+    "image_panels": {
+      "via": "slide",
+      "collection": "image-panel"
+    },
+    "section": {
+      "via": "slide",
+      "model": "section"
+    }
+  }
+}
