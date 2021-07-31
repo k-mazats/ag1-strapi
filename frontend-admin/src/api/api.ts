@@ -1,7 +1,12 @@
 const axios = require("axios").default;
 const apiUrl = "http://localhost:1337/admin";
 
-export const postLogin = async (formData) => {
+interface LoginFormData {
+	email: string;
+	password: string;
+}
+
+export const postLogin = async (formData: LoginFormData) => {
 	let response;
 	try {
 		response = await axios({
@@ -15,7 +20,7 @@ export const postLogin = async (formData) => {
 	return response;
 };
 
-export const getUser = async (token) => {
+export const getUser = async (token: string | null) => {
 	let response;
 	try {
 		response = await axios({
@@ -30,5 +35,3 @@ export const getUser = async (token) => {
 	}
 	return response;
 };
-
-

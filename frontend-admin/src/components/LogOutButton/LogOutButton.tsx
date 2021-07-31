@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { UserContext } from "../UserContext";
+import { UserContext } from "src/UserContext";
 
-const LogOutButton = (props) => {
+const LogOutButton = () => {
 	const { setUser } = useContext(UserContext);
 	const logOutHandler = () => {
 		localStorage.removeItem("token");
-    setUser(null);
+		if (setUser) setUser(null);
 	};
 	return <button onClick={logOutHandler}>Déconnexion</button>;
 };

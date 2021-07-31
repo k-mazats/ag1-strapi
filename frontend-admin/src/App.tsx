@@ -7,23 +7,23 @@ import {
 	Redirect,
 } from "react-router-dom";
 
-import { UserContext } from "./UserContext";
-import { getUser } from "./api/api";
+import { UserContext } from "src/UserContext";
+import { getUser } from "src/api/api";
 
-import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Home from "src/pages/Home/Home";
+import Login from "src/pages/Login/Login";
 
 import "./App.css";
 
 const App = () => {
-	const [user, setUser] = useState();
-	const [loading, setLoading] = useState(true)
+	const [user, setUser] = useState<null | object >(null);
+	const [loading, setLoading] = useState<boolean>(true);
 	useEffect(() => {
 		if (localStorage.getItem("token")) {
 			getUser(localStorage.getItem("token"))
 				.then((res) => {
 					setUser(res.data.data);
-					setLoading(false)
+					setLoading(false);
 				})
 				.catch(() => {
 					setUser(null);
@@ -36,23 +36,20 @@ const App = () => {
 	}, []);
 	return (
 		<div className="App">
-			{ !loading ?
-				(<Router>
-					<Switch>
-						<UserContext.Provider value={{ user, setUser }}>
+			{!loading ? (
+				<UserContext.Provider value={{user: user, setUser: setUser}}>
+					<Router>
+						<Switch>
 							<Route exact path="/auth">
 								<Login></Login>
 							</Route>
 							<Route exact path="/">
 								{user === null ? <Redirect to="/auth" /> : <Home></Home>}
 							</Route>
-							{/* <Route exact path="/">
-							<Home></Home>
-						</Route> */}
-						</UserContext.Provider>
-					</Switch>
-				</Router>): null
-			}
+						</Switch>
+					</Router>
+				</UserContext.Provider>
+			) : null}
 		</div>
 	);
 };
