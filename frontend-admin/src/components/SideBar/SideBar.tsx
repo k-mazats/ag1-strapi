@@ -1,10 +1,10 @@
-import LogOutButton from "src/components/LogOutButton/LogOutButton";
+import UserBlock from "../UserBlock/UserBlock";
 import "./SideBar.css";
 
 const SideBar = () => {
 	return (
 		<div className="side-bar">
-			<LogOutButton></LogOutButton>
+			<UserBlock></UserBlock>
 		</div>
 	);
 };

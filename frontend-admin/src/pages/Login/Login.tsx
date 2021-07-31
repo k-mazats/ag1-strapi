@@ -1,9 +1,9 @@
 import { useHistory } from "react-router";
 
 import { useContext, useEffect } from "react";
-import { UserContext } from "src/UserContext";
+import { UserContext } from "../../UserContext"
 
-import LoginForm from "src/components/LogInForm/LogInForm";
+import LogInForm from "../../components/LogInForm/LogInForm";
 
 const Login = () => {
 	const { user } = useContext(UserContext);
@@ -13,7 +13,7 @@ const Login = () => {
 	}, [history, user]);
 	return (
 		<div className="login">
-			<LoginForm></LoginForm>
+			<LogInForm></LogInForm>
 		</div>
 	);
 };

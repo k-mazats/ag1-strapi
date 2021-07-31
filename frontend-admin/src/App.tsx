@@ -10,8 +10,8 @@ import {
 import { UserContext } from "src/UserContext";
 import { getUser } from "src/api/api";
 
-import Home from "src/pages/Home/Home";
-import Login from "src/pages/Login/Login";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
 
 import "./App.css";
 

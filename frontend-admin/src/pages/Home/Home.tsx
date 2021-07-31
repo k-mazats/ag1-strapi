@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { UserContext } from "src/UserContext";
+import { UserContext } from "../../UserContext";
 
-import SideBar from "src/components/SideBar/SideBar";
+import SideBar from "../../components/SideBar/SideBar";
 
 import "./Home.css";
 

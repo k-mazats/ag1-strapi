@@ -1,6 +1,6 @@
-import { postLogin } from "src/api/api";
+import { postLogin } from "../../api/api";
 import { useState, useContext, SyntheticEvent } from "react";
-import { UserContext } from "src/UserContext";
+import { UserContext } from "../../UserContext";
 import { useHistory } from "react-router-dom";
 
 const LogInForm = () => {
