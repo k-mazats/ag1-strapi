@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_section_types_galerie_textes",
+  "info": {
+    "name": "Galerie texte",
+    "icon": "address-book",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "galerie_de_texte": {
+      "unique": true,
+      "model": "text-panel"
+    },
+    "Fond": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    }
+  }
+}

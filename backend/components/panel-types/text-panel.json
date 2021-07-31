@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_panel_types_text_panels",
+  "info": {
+    "name": "TextPanel",
+    "icon": "align-justify",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Contenu": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

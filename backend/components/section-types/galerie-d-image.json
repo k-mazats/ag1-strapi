@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_section_types_galerie_d_images",
+  "info": {
+    "name": "Galerie d'image",
+    "icon": "ad",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "galerie_dimage": {
+      "unique": true,
+      "model": "slide"
+    },
+    "Fond": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    }
+  }
+}

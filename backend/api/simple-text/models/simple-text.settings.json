@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "simple_texts",
+  "collectionName": "simpleText",
   "info": {
-    "name": "SimpleText",
+    "name": "Paragraphe",
     "description": ""
   },
   "options": {
@@ -12,13 +12,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "textContent": {
+    "Paragraphe": {
       "type": "richtext",
       "required": true
     },
-    "section": {
-      "via": "simple_text",
-      "model": "section"
+    "Nom": {
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }

@@ -2,7 +2,8 @@
   "kind": "singleType",
   "collectionName": "headers",
   "info": {
-    "name": "Header"
+    "name": "Entête",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -11,14 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "Titre": {
       "type": "string",
       "required": true
     },
-    "subtitle": {
-      "type": "string"
-    },
-    "backgroundCover": {
+    "Fond": {
       "collection": "file",
       "via": "related",
       "allowedTypes": [
@@ -27,6 +25,9 @@
       "plugin": "upload",
       "required": true,
       "pluginOptions": {}
+    },
+    "Soustitre": {
+      "type": "string"
     }
   }
 }

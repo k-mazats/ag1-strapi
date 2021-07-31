@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "text_panels",
+  "collectionName": "textSlides",
   "info": {
-    "name": "TextPanel",
+    "name": "Galerie de texte",
     "description": ""
   },
   "options": {
@@ -12,17 +12,16 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string",
-      "required": false
-    },
-    "textContent": {
-      "type": "richtext",
+    "Paragraphes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "panel-types.text-panel",
       "required": true
     },
-    "slide": {
-      "via": "text_panels",
-      "model": "slide"
+    "Nom": {
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }

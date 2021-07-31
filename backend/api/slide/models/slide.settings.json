@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "slides",
+  "collectionName": "imageSlides",
   "info": {
-    "name": "Slide",
+    "name": "Galerie d'images",
     "description": ""
   },
   "options": {
@@ -12,24 +12,15 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "Text",
-        "Image"
-      ]
+    "Images": {
+      "type": "component",
+      "repeatable": true,
+      "component": "panel-types.image-panel"
     },
-    "text_panels": {
-      "via": "slide",
-      "collection": "text-panel"
-    },
-    "image_panels": {
-      "via": "slide",
-      "collection": "image-panel"
-    },
-    "section": {
-      "via": "slide",
-      "model": "section"
+    "Nom": {
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }
