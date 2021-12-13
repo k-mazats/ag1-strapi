@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "contents",
+  "info": {
+    "name": "Content",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Section": {
+      "type": "dynamiczone",
+      "components": [
+        "section-types.carousel-section",
+        "section-types.simple-text-section"
+      ],
+      "required": true
+    }
+  }
+}

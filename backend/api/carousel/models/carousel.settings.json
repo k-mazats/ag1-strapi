@@ -1,8 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "simple_texts",
+  "collectionName": "carousels",
   "info": {
-    "name": "SimpleText"
+    "name": "Carousel",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -11,6 +12,13 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "Panels": {
+      "type": "dynamiczone",
+      "components": [
+        "panel-definition.panel"
+      ],
+      "required": true
+    },
     "name": {
       "type": "string",
       "required": true
@@ -19,15 +27,21 @@
       "model": "file",
       "via": "related",
       "allowedTypes": [
-        "images"
+        "files",
+        "images",
+        "videos"
       ],
       "plugin": "upload",
       "required": true,
       "pluginOptions": {}
     },
-    "textContent": {
-      "type": "richtext",
-      "required": true
+    "visiblePanels": {
+      "type": "integer",
+      "default": 1
+    },
+    "autoplay": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

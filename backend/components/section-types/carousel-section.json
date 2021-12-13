@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_section_types_carousel_sections",
+  "info": {
+    "name": "CarouselSection",
+    "icon": "address-book"
+  },
+  "options": {},
+  "attributes": {
+    "carousel": {
+      "model": "carousel"
+    }
+  }
+}

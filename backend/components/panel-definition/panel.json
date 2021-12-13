@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_panel_definition_panels",
+  "info": {
+    "name": "Panel",
+    "icon": "ad",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "textContent": {
+      "type": "richtext"
+    },
+    "picture": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "title": {
+      "type": "string"
+    },
+    "pictureLink": {
+      "type": "string"
+    }
+  }
+}

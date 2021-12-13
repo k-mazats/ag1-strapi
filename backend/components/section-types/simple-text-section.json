@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_section_types_simple_text_sections",
+  "info": {
+    "name": "simpleTextSection",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "simple_text": {
+      "model": "simple-text"
+    }
+  }
+}

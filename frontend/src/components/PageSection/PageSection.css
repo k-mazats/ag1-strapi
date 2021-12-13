@@ -1,0 +1,19 @@
+.section {
+	min-height: 100vh;
+}
+.section__content {
+	min-height: 80vh;
+	background-color: rgba(0, 0, 0, 0.8);
+	color: white;
+	padding: 2rem;
+}
+.section__content pre {
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+}
+.section__header {
+	height: 20vh;
+}
