@@ -40,4 +40,18 @@ const getCarousel = async (id) => {
 		console.error(err);
 	}
 };
-export { getContent, getHero, getCarousel };
+const sendMail = async (form) => {
+try {
+	let response = await axios({
+		method: 'post',
+		url: `${baseUrl}/contact`,
+		json: true,
+		data: form,
+	});
+	// console.log(response.data);
+	return response.data;
+} catch (err) {
+	console.error(err);
+}
+}
+export { getContent, getHero, getCarousel, sendMail };

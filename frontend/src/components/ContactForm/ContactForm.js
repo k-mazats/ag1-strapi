@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { nopeResolver } from '@hookform/resolvers/nope';
 import Nope from 'nope-validator';
 import { Parallax } from 'react-parallax';
+import { sendMail } from '../../api/api';
 import './ContactForm.css';
 const schema = Nope.object().shape({
 	name: Nope.string().required(),
@@ -16,8 +17,8 @@ const ContactForm = (props) => {
 		} = useForm({
 			resolver: nopeResolver(schema),
 		});
-		const submitForm = (form) => {
-			console.log(`Message de ${form.name} : ${form.message} -- Repondre à ${form.mail}`);
+		const submitForm = async (form) => {
+			await sendMail(form)
 		}
 	return (
 		<section className="section">
