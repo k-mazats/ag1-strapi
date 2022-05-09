@@ -1,6 +1,8 @@
+import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { nopeResolver } from '@hookform/resolvers/nope';
 import Nope from 'nope-validator';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { Parallax } from 'react-parallax';
 import { sendMail } from '../../api/api';
 import './ContactForm.css';
@@ -10,16 +12,28 @@ const schema = Nope.object().shape({
 	message: Nope.string().required(),
 });
 const ContactForm = (props) => {
-	 const {
-			register,
-			formState: { errors },
-			handleSubmit,
-		} = useForm({
-			resolver: nopeResolver(schema),
-		});
-		const submitForm = async (form) => {
-			await sendMail(form)
+	const { executeRecaptcha } = useGoogleReCaptcha();
+	const handleVerifyRecaptcha = useCallback(async () => {
+		if (!executeRecaptcha) {
+			console.log('Execute recaptcha not yet available');
 		}
+		const token = await executeRecaptcha('yourAction');
+		return token;
+	}, [executeRecaptcha]);
+	const {
+		register,
+		formState: { errors },
+		handleSubmit,
+	} = useForm({
+		resolver: nopeResolver(schema),
+	});
+
+	const submitForm = async (form) => {
+		const token = await handleVerifyRecaptcha();
+		const data = { ...form, token };
+		await sendMail(data);
+	};
+	
 	return (
 		<section className="section">
 			<div className="section__header">Nous contacter</div>

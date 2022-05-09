@@ -40,13 +40,13 @@ const getCarousel = async (id) => {
 		console.error(err);
 	}
 };
-const sendMail = async (form) => {
+const sendMail = async (data) => {
 try {
 	let response = await axios({
 		method: 'post',
 		url: `${baseUrl}/contact`,
 		json: true,
-		data: form,
+		data,
 	});
 	// console.log(response.data);
 	return response.data;

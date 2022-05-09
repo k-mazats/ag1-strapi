@@ -16,13 +16,13 @@ module.exports = {
       text: data.message,
     };
     try {
-      // const reCaptchaOptions = {
-      //   method: "get",
-      //   url: `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_TOKEN}-cBRyIGkPUvdwcn_eH&response=${data.token}`,
-      // };
-      // const reCaptcha = await axios(reCaptchaOptions);
+      const reCaptchaOptions = {
+        method: "get",
+        url: `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_TOKEN}&response=${data.token}`,
+      };
+      const reCaptcha = await axios(reCaptchaOptions);
 
-      // if (reCaptcha.data.success && reCaptcha.data.score >= 0.5) {
+      if (reCaptcha.data.success && reCaptcha.data.score >= 0.5) {
       try {
         await strapi.plugins.email.services.email.send(options);
       } catch (e) {
@@ -32,7 +32,7 @@ module.exports = {
           throw new Error(`Couldn't send email: ${e.message}.`);
         }
       }
-      // }
+      }
     } catch (e) {
       throw new Error(`Couldn't send email: ${e.message}.`);
     } // Send 200 `ok`
