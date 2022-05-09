@@ -1,0 +1,29 @@
+.contact{
+  display: flex;
+  flex-wrap: wrap;
+  width:60%;
+  justify-content: space-between;
+}
+.contact__name-label,.contact__mail-label{
+width:40%;
+display: flex;
+justify-content: space-between;
+margin-bottom: 2rem;
+}
+.contact input{
+width: 50%
+}
+.contact__message-label{
+  width:100%;
+  display: flex;
+justify-content: space-between;
+}
+.contact__message-label textarea{
+  width:80%;
+  height: 10rem;
+  margin-bottom: 2rem;
+}
+.contact button{
+  margin-right: 0;
+  margin-left: auto;
+}

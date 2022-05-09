@@ -2,10 +2,11 @@
 	min-height: 100vh;
 }
 .section__content {
-	min-height: 80vh;
+	min-height: 85vh;
 	background-color: rgba(0, 0, 0, 0.8);
 	color: white;
 	padding: 2rem;
+	display: flex;justify-content: center; align-items: center;
 }
 .section__content pre {
 	white-space: pre-wrap;
@@ -15,5 +16,7 @@
 	word-wrap: break-word;
 }
 .section__header {
-	height: 20vh;
+	height: 15vh;
+	font-size: 2em;
+	padding: 1rem 0 0 5rem;
 }

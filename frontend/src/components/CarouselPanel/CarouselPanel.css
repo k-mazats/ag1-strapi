@@ -1,0 +1,19 @@
+.carousel__panel {
+  max-width: calc(100% - 20rem);
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.carousel__panel-title {
+  width: 100%;
+  align-self: flex-start;
+}
+.carousel__panel-text-content--half-width {
+  width: 50%;
+}
+.carousel__panel-img-wrapper {
+  width: 50%;
+}

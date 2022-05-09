@@ -1,25 +1,13 @@
+import ReactMarkdown from 'react-markdown';
+
 // import './TextSection.css';
 
 const TextSection = (props) => {
-	// const getName = () => {
-	// 	const sectionType = props.__component;
-	// 	let sectionName;
-	// 	switch (sectionType) {
-	// 		case 'section-types.galerie-d-image':
-	// 			sectionName = props.galerie_dimage.Nom;
-	// 			break;
-	// 		case 'section-types.galerie-texte':
-	// 			sectionName = props.galerie_de_texte.Nom;
-	// 			break;
-	// 		case 'section-types.paragraphe':
-	// 			sectionName = props.simple_paragraphe.Nom;
-	// 			break;
-	// 		default:
-	// 			break;
-	// 	}
-	// 	return sectionName;
-	// };
-	return <div>{props.Paragraphe}</div>;
+	return (
+		<article>
+			<ReactMarkdown components={{h1: 'h5', h2: 'h5', h3: 'h5', h4: 'h6', h5: 'h6'}}>{props.textContent}</ReactMarkdown>
+		</article>
+	);
 };
 
 export default TextSection;
