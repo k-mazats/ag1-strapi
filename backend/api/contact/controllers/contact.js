@@ -2,6 +2,7 @@
 
 const { isNil, pick } = require("lodash/fp");
 const axios = require("axios").default;
+const { verify } = require("hcaptcha");
 /**
  * Email.js controller
  *
@@ -15,23 +16,20 @@ module.exports = {
       replyTo: data.mail,
       text: data.message,
     };
+    const secret = process.env.CAPTCHA_SECRET;
+    const token = data.token;
     try {
-      const reCaptchaOptions = {
-        method: "get",
-        url: `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_TOKEN}&response=${data.token}`,
-      };
-      const reCaptcha = await axios(reCaptchaOptions);
-
-      if (reCaptcha.data.success && reCaptcha.data.score >= 0.5) {
-      try {
-        await strapi.plugins.email.services.email.send(options);
-      } catch (e) {
-        if (e.statusCode === 400) {
-          return ctx.badRequest(e.message);
-        } else {
-          throw new Error(`Couldn't send email: ${e.message}.`);
+      let { success } = await verify(secret, token);
+      if (success) {
+        try {
+          await strapi.plugins.email.services.email.send(options);
+        } catch (e) {
+          if (e.statusCode === 400) {
+            return ctx.badRequest(e.message);
+          } else {
+            throw new Error(`Couldn't send email: ${e.message}.`);
+          }
         }
-      }
       }
     } catch (e) {
       throw new Error(`Couldn't send email: ${e.message}.`);

@@ -1,8 +1,8 @@
-import { useCallback } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { nopeResolver } from '@hookform/resolvers/nope';
 import Nope from 'nope-validator';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { Parallax } from 'react-parallax';
 import { sendMail } from '../../api/api';
 import './ContactForm.css';
@@ -12,10 +12,20 @@ const schema = Nope.object().shape({
 	message: Nope.string().required(),
 });
 const ContactForm = (props) => {
-	const { executeRecaptcha } = useGoogleReCaptcha();
-	const handleVerifyRecaptcha = useCallback(async () => {
-		if (!executeRecaptcha) {
-			console.log('Execute recaptcha not yet available');
+	const [token,setToken] = useState('');
+	 const {
+			register,
+			formState: { errors },
+			handleSubmit,
+		} = useForm({
+			resolver: nopeResolver(schema),
+		});
+		const onVerifyCaptcha = (token) => {
+			setToken(token);
+		}
+		const submitForm = async (form) => {
+			const data = {...form,token}
+			await sendMail(data)
 		}
 		const token = await executeRecaptcha('yourAction');
 		return token;
@@ -62,6 +72,10 @@ const ContactForm = (props) => {
 							Message :<textarea {...register('message')}></textarea>
 							{errors.message && <div>x</div>}
 						</label>
+						<HCaptcha
+							sitekey={process.env.REACT_APP_HCAPTCHA}
+							onVerify={onVerifyCaptcha}
+						/>
 						<button>Envoyer</button>
 					</form>
 				</div>
