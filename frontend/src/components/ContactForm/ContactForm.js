@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { nopeResolver } from '@hookform/resolvers/nope';
 import Nope from 'nope-validator';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { Parallax } from 'react-parallax';
 import { sendMail } from '../../api/api';
 import './ContactForm.css';
@@ -10,6 +12,7 @@ const schema = Nope.object().shape({
 	message: Nope.string().required(),
 });
 const ContactForm = (props) => {
+	const [token,setToken] = useState('');
 	 const {
 			register,
 			formState: { errors },
@@ -17,8 +20,12 @@ const ContactForm = (props) => {
 		} = useForm({
 			resolver: nopeResolver(schema),
 		});
+		const onVerifyCaptcha = (token) => {
+			setToken(token);
+		}
 		const submitForm = async (form) => {
-			await sendMail(form)
+			const data = {...form,token}
+			await sendMail(data)
 		}
 	return (
 		<section className="section">
@@ -48,6 +55,10 @@ const ContactForm = (props) => {
 							Message :<textarea {...register('message')}></textarea>
 							{errors.message && <div>x</div>}
 						</label>
+						<HCaptcha
+							sitekey={process.env.REACT_APP_HCAPTCHA}
+							onVerify={onVerifyCaptcha}
+						/>
 						<button>Envoyer</button>
 					</form>
 				</div>
