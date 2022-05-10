@@ -30,6 +30,8 @@ module.exports = {
             throw new Error(`Couldn't send email: ${e.message}.`);
           }
         }
+      }else{
+        throw new Error(`Please complete the captcha.`);
       }
     } catch (e) {
       throw new Error(`Couldn't send email: ${e.message}.`);

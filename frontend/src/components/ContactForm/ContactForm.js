@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { nopeResolver } from '@hookform/resolvers/nope';
 import Nope from 'nope-validator';
@@ -12,24 +12,9 @@ const schema = Nope.object().shape({
 	message: Nope.string().required(),
 });
 const ContactForm = (props) => {
-	const [token,setToken] = useState('');
-	 const {
-			register,
-			formState: { errors },
-			handleSubmit,
-		} = useForm({
-			resolver: nopeResolver(schema),
-		});
-		const onVerifyCaptcha = (token) => {
-			setToken(token);
-		}
-		const submitForm = async (form) => {
-			const data = {...form,token}
-			await sendMail(data)
-		}
-		const token = await executeRecaptcha('yourAction');
-		return token;
-	}, [executeRecaptcha]);
+	const [token, setToken] = useState('');
+	const captchaRef = useRef(null);
+	const formRef = useRef(null);
 	const {
 		register,
 		formState: { errors },
@@ -37,13 +22,17 @@ const ContactForm = (props) => {
 	} = useForm({
 		resolver: nopeResolver(schema),
 	});
-
-	const submitForm = async (form) => {
-		const token = await handleVerifyRecaptcha();
-		const data = { ...form, token };
-		await sendMail(data);
+	const onVerifyCaptcha = (token) => {
+		setToken(token);
 	};
-	
+	const submitForm = async (form) => {
+		if (token !== '') {
+			const data = { ...form, token };
+			await sendMail(data);
+			captchaRef.current.resetCaptcha();
+			formRef.current.reset();
+		}
+	};
 	return (
 		<section className="section">
 			<div className="section__header">Nous contacter</div>
@@ -56,6 +45,7 @@ const ContactForm = (props) => {
 					<form
 						className="contact"
 						onSubmit={handleSubmit((d) => submitForm(d))}
+						ref={formRef}
 						formNoValidate
 					>
 						<label className="contact__name-label">
@@ -75,6 +65,7 @@ const ContactForm = (props) => {
 						<HCaptcha
 							sitekey={process.env.REACT_APP_HCAPTCHA}
 							onVerify={onVerifyCaptcha}
+							ref={captchaRef}
 						/>
 						<button>Envoyer</button>
 					</form>

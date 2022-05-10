@@ -49,7 +49,7 @@ try {
 		data,
 	});
 	// console.log(response.data);
-	return response.data;
+	return response;
 } catch (err) {
 	console.error(err);
 }
