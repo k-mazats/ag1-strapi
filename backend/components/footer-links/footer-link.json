@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_footer_links_footer_links",
+  "info": {
+    "name": "footerLink",
+    "icon": "external-link-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

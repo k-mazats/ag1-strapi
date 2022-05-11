@@ -40,6 +40,19 @@ const getCarousel = async (id) => {
 		console.error(err);
 	}
 };
+const getFooter = async (id) => {
+	try {
+		let response = await axios({
+			method: 'get',
+			url: `${baseUrl}/footer`,
+			json: true,
+		});
+		// console.log(response.data);
+		return response.data;
+	} catch (err) {
+		console.error(err);
+	}
+};
 const sendMail = async (data) => {
 try {
 	let response = await axios({
@@ -49,9 +62,9 @@ try {
 		data,
 	});
 	// console.log(response.data);
-	return response;
+	return response.data;
 } catch (err) {
 	console.error(err);
 }
 }
-export { getContent, getHero, getCarousel, sendMail };
+export { getContent, getHero, getCarousel, sendMail, getFooter };

@@ -7,9 +7,18 @@ import './PageSection.css';
 
 const PageSection = (props) => {
 	return (
-		<section className="section">
+		<section
+			className="section"
+			id={
+				props?.carousel
+					? props.carousel.name.split(' ').join('_')
+					: props.simple_text.name.split(' ').join('_')
+			}
+		>
 			<div className="section__header">
-				{props?.carousel ? props.carousel.name : props.simple_text.name}
+				<h3>
+					{props?.carousel ? props.carousel.name : props.simple_text.name}
+				</h3>
 			</div>
 			<Parallax
 				bgImage={`http://localhost:1337${

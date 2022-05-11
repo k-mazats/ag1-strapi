@@ -37,7 +37,7 @@ const ContactForm = (props) => {
 		<section className="section">
 			<div className="section__header">Nous contacter</div>
 			<Parallax
-				bgImage={`http://localhost:1337${props.background.url}`}
+				// bgImage={`http://localhost:1337${props.background.url}`}
 				bgSize="cover"
 				strength={-200}
 			>

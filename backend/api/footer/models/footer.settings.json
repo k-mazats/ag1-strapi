@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "footers",
+  "info": {
+    "name": "Footer",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "footerLinks": {
+      "type": "dynamiczone",
+      "components": [
+        "footer-links.footer-link"
+      ]
+    }
+  }
+}
